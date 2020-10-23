@@ -22,7 +22,7 @@ spec:
         stage("Podman Check") {
             steps {
                 git 'https://github.com/ngallot/docker-python-helloworld'
-                sh 'podman build --no-cache -t mypythonhelloworld . '
+                sh 'podman images'
             }
         }
     }
