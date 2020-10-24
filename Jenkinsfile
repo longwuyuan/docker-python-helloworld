@@ -22,7 +22,8 @@ spec:
         stage("Podman Check") {
             steps {
                 git 'https://github.com/ngallot/docker-python-helloworld'
-                sh 'podman build -t docker-python-helloworld .'
+                sh 'whoami && pwd'
+                sh 'podman build  -loglevel=2 -t docker-python-helloworld .'
             }
         }
     }
