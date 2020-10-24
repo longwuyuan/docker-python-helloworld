@@ -19,9 +19,13 @@ spec:
         }
     }
     stages {
-        stage("Podman Check") {
+        stage("Checkout src") {
             steps {
                 git 'https://github.com/ngallot/docker-python-helloworld'
+            }
+        }
+        stage("Check podman") {
+            steps {
                 sh 'whoami && pwd && ls -l'
                 sh 'podman info'
             }
