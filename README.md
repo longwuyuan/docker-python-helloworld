@@ -26,7 +26,7 @@ python main.py
 ```
 
 
-### Steps to run the python code withing a Docker container
+### Steps to run the python code within a Docker container
 
 - Build the image:
 ```bash
@@ -37,6 +37,3 @@ docker build -t docker-python-helloworld:lastest
 ```bash
 docker run docker-python-helloworld:latest 
 ```
-
-
-
