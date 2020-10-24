@@ -11,7 +11,7 @@ It's highly recommended to install the (empty) dependencies in a virtual environ
 virtualenv venv
 ```
 
-- Activatingv the virtual environment:
+- Activating the virtual environment:
 ```bash
 source venv/bin/activate
 ```
@@ -24,7 +24,6 @@ pip install -r requirements.txt
 ```bash
 python main.py
 ```
-
 
 ### Steps to run the python code within a Docker container
 
