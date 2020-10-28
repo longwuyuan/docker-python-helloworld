@@ -11,7 +11,7 @@ metadata:
 spec:
   containers:
   - name: jnlp
-    image: ghcr.io/longwuyuan/jenkins-jnlp-agent-podman/jenkins-jnlp-agent-podman:main
+    image: longwuyuan/jenkins-jnlp-agent-podman:latest
     imagePullPolicy: Always
     tty: true
   restartPolicy: Never
@@ -27,7 +27,7 @@ spec:
         stage("Check podman") {
             steps {
                 sh 'whoami && pwd && ls -l'
-                sh 'podman info'
+                sh 'podman --storage-driver vfs info'
             }
         }
     }
