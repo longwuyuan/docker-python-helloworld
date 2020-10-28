@@ -27,7 +27,7 @@ spec:
         stage("Check podman") {
             steps {
                 sh 'whoami && pwd && ls -l'
-                sh 'podman --storage-driver vfs info'
+                sh 'podman --storage-driver vfs images'
             }
         }
     }
