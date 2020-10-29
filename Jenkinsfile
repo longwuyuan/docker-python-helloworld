@@ -39,7 +39,7 @@ spec:
                 sh 'whoami && pwd && ls -alth && echo "WORKSPACE=$WORKSPACE"'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t test-podman-build -f Dockerfile.testbuild .'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
-                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t jenkins-kubernetes-podman .'
+                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins -pid=host build -t jenkins-kubernetes-podman .'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
             }
         }
