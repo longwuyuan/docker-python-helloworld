@@ -32,12 +32,11 @@ spec:
     stages {
         stage('Main') {
             steps {
-                sh 'hostname'
-                sh 'ls -l /'
+                sh 'hostname && sysctl -A | grep -i namespace && ls -l /'
                 git 'https://github.com/longwuyuan/jenkins-kubernetes-podman.git'
                 sh 'echo "Testing if podman build works"'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
-                sh 'whoami && pwd && ls -al && echo $WORKSPACE'
+                sh 'whoami && pwd && ls -alth && echo "WORKSPACE=$WORKSPACE"'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t test-podman-build -f Dockerfile.testbuild .'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t jenkins-kubernetes-podman .'
