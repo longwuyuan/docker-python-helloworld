@@ -35,7 +35,9 @@ spec:
                 sh 'hostname'
                 sh 'ls -l /'
                 git 'https://github.com/longwuyuan/docker-python-helloworld.git'
+                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t docker-python-helloworld .'
+                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
             }
         }
     }
