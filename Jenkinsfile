@@ -15,7 +15,7 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: podman
+  - name: shell
     image: longwuyuan/podman
     command:
     - sleep
@@ -26,7 +26,7 @@ spec:
             // container('shell') {
             //     sh 'hostname'
             // }
-            defaultContainer 'podman'
+            defaultContainer 'shell'
         }
     }
     stages {
