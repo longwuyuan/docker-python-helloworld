@@ -10,7 +10,7 @@ pipeline {
             //     command 'sleep'
             //     args 'infinity'
             // }
-            yaml ''
+            yaml '''
 apiVersion: v1
 kind: Pod
 spec:
@@ -21,7 +21,7 @@ spec:
     - sleep
     args:
     - infinity
-''
+'''
             // Can also wrap individual steps:
             // container('shell') {
             //     sh 'hostname'
@@ -34,8 +34,7 @@ spec:
             steps {
                 sh 'hostname'
                 sh 'ls -l /'
-                git 'https://github.com/longwuyuan/docker-python-helloworld.git'
-                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t docker-python-helloworld .'
+                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins info'
             }
         }
     }
