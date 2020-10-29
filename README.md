@@ -1,3 +1,10 @@
+# This is a example of building docker images in following use-case
+- Jenkins master running as a pod in kubernetes
+- Jenkins agent launched as a pod in kubernetes
+- Needing to build a docker image
+- Not running the agent pod in privileged mode
+
+
 # docker-python-helloworld
 A Python dockerized hello world app
 This repo aims at showing how simple it can be to build a Docker container running a Python (very simple) app.
