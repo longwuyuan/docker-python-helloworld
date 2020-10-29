@@ -1,7 +1,7 @@
 FROM python:3.7-slim
 
 # Add requirements file in the container
-RUN whoami 
+RUN id 
 RUN pip install -r requirements.txt
 
 # Add source code in the container
