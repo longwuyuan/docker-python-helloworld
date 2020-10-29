@@ -1,8 +1,7 @@
-FROM python:3.7-slim
+FROM python:alpine
 
 # Add requirements file in the container
 COPY requirements.txt /
-RUN id 
 RUN pip install -r requirements.txt
 
 # Add source code in the container
