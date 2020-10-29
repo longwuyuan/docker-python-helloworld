@@ -34,13 +34,13 @@ spec:
             steps {
                 sh 'hostname'
                 sh 'ls -l /'
-                git 'https://github.com/longwuyuan/docker-python-helloworld.git'
+                git 'https://github.com/longwuyuan/jenkins-kubernetes-podman.git'
                 sh 'echo "Testing if podman build works"'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
                 sh 'whoami && pwd && ls -al && echo $WORKSPACE'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t test-podman-build -f Dockerfile.testbuild .'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
-                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t docker-python-helloworld .'
+                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t jenkins-kubernetes-podman .'
                 sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins images '
             }
         }
