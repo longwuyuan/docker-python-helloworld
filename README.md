@@ -4,6 +4,8 @@
 - Needing to build a docker image
 - Not running the agent pod in privileged mode
 
+One issue exists https://github.com/containers/podman/issues/8190
+
 
 # docker-python-helloworld
 A Python dockerized hello world app
