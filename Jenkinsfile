@@ -1,33 +1,41 @@
+// Uses Declarative syntax to run commands inside a container.
 pipeline {
     agent {
         kubernetes {
-            cloud 'kubernetes'
-            inheritFrom ' '
-            namespace 'jenkins'
-            yaml """
+            // Rather than inline YAML, in a multibranch Pipeline you could use: yamlFile 'jenkins-pod.yaml'
+            // Or, to avoid YAML:
+            // containerTemplate {
+            //     name 'shell'
+            //     image 'ubuntu'
+            //     command 'sleep'
+            //     args 'infinity'
+            // }
+            yaml ''
+apiVersion: v1
 kind: Pod
-metadata:
-  name: jnlp
 spec:
   containers:
-  - name: jnlp
-    image: longwuyuan/jenkins-jnlp-agent-podman:latest
-    imagePullPolicy: Always
-    tty: true
-  restartPolicy: Never
-"""
+  - name: podman
+    image: longwuyuan/podman
+    command:
+    - sleep
+    args:
+    - infinity
+''
+            // Can also wrap individual steps:
+            // container('shell') {
+            //     sh 'hostname'
+            // }
+            defaultContainer 'podman'
         }
     }
     stages {
-        stage("Checkout src") {
+        stage('Main') {
             steps {
-                git 'https://github.com/ngallot/docker-python-helloworld'
-            }
-        }
-        stage("Check podman") {
-            steps {
-                sh 'whoami && pwd && ls -l'
-                sh 'sleep 9999'
+                sh 'hostname'
+                sh 'ls -l /'
+                git 'https://github.com/longwuyuan/docker-python-helloworld.git'
+                sh 'podman --storage-driver vfs --runroot /home/jenkins/ --root /home/jenkins build -t docker-python-helloworld .'
             }
         }
     }
