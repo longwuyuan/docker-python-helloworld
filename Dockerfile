@@ -1,6 +1,7 @@
 FROM python:3.7-slim
 
 # Add requirements file in the container
+COPY requirements.txt /
 RUN id 
 RUN pip install -r requirements.txt
 
